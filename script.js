@@ -3,12 +3,15 @@ var secondsLeft = 75;
 var timer = document.querySelector(".timer");
 var highscores = document.querySelector(".highscores");
 var score = 0;
-
+var startingContainer = document.querySelector(".starting-page");
+var quizContainer = document.querySelector(".quiz-container");
+var highScoreContainer = document.querySelector("highscore-container");
 
 
 startBtn.addEventListener("click", function() {
    quizTimer();
-
+    startingContainer.setAttribute("class","container d-none");
+    quizContainer.setAttribute("class","container");
 })
 //create start button that initiates quiz (and timer)
 
@@ -42,14 +45,13 @@ var questions = [
 ];
 //create a timer interval that counts down when start is clicked 
 function quizTimer() {
-    // Create the countdown timer.
     var timerInterval = setInterval(function() {
       secondsLeft--;
-      timer.textContent = secondsLeft + " Untill the quiz is over!";
+      timer.textContent = secondsLeft;
   
       if(secondsLeft === 0) {
         clearInterval(timerInterval);
-        
+        alert("Thank you for playing, better luck next time")
       }
   
     }, 750);
