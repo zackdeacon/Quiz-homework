@@ -3,7 +3,7 @@
     font-size: 50px;
     color: turquoise;
 }
-.btn-start {
+#btn-start {
     display: flex;
     justify-content: center;
 }
@@ -19,4 +19,13 @@
 .highscores {
     text-align: left;
     font-size: small;
+}
+.btnClick {
+    border: 1px solid black;
+    background: papayawhip;
+    color: saddlebrown;
+    display: flex;
+    justify-content: center;
+    margin: 10px auto;
+    padding: 5px;
 }

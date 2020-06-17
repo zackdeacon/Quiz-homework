@@ -11,18 +11,18 @@
 
     <nav class="navbar navbar-expand-sm">
        <div class="col-sm-2">
-        <a class="navbar-brand highscores" href="#">Highscores!</a>
+        <a class="navbar-brand" id="highscores" href="#">Highscores!</a>
         </div>
         <div class="col-sm-7"></div>
         <div class="col-ms-1">
         <p>Time:</p>
         </div>
         <div class="col-sm-1">
-         <p class="timer"></p>
+         <p id="timer"></p>
         </div>
       </nav>
 
-<div class="container starting-page">
+<div class="container" id="starting-page">
     <div class="row">
       <div class="col-sm-2">
         
@@ -33,18 +33,23 @@
             <!-- <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p> -->
             <hr class="my-4">
             <!-- <p>It uses utility classes for typography and spacing to space content out within the larger container.</p> -->
-            <a class="btn btn-primary btn-lg btn-start" href="#" role="button">Start Quiz!</a>
+            <a class="btn btn-primary btn-lg" id="btn-start" href="#" role="button">Start Quiz!</a>
           </div>
       </div>
       <div class="col-sm-2">
-       
       </div>
     </div>
   </div>
 
-  <div class="container d-none quiz-container"></div>
+  <div class="container d-none" id="quiz-container">
+    <h2 id="questiontitle"> </h2>
+    <button id="btn-0" class="btnClick"></button>
+    <button id="btn-1" class="btnClick"></button>
+    <button id="btn-2" class="btnClick"></button>
+    <button id="btn-3" class="btnClick"></button>
+  </div>
 
-  <div class="container d-none final-container">
+  <div class="container d-none" id="final-container">
     <div class="row">
         <div class="col-12 text-center">
             <form>
@@ -65,7 +70,7 @@
         </div>
     </div>
 </div>
-<div class="container d-none highscore-container">
+<div class="container d-none" id="final-container">
     <div class="row">
         <div class="col-2"></div>
         <div class="col-8 highscore-table">
