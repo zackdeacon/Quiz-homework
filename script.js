@@ -4,36 +4,42 @@ var highscores = document.getElementById("highscores");
 var startingContainer = document.getElementById("starting-page");
 var quizContainer = document.getElementById("quiz-container");
 var finalContainer = document.getElementById("final-container");
-var questionTitle = document.getElementById("questiontitle")
+var questionTitle = document.getElementById("questiontitle");
+var congrats = document.getElementById("right-or-wrong");
 var secondsLeft = 75;
 var score = 0;
 var currentQuestion = 0; 
 
+
+//create start button that initiates quiz (and timer)
 startBtn.addEventListener("click", function() {
    quizTimer();
     startingContainer.setAttribute("class","container d-none");
     quizContainer.setAttribute("class","container");
 })
+//when timer hits zero or all questions have been answered the quiz is over 
 
 function endGame() {
-    if (secondsLeft <= 0) {
-        startingContainer.setAttribute("class","container d-none");
+    if (secondsLeft <= 1 || currentQuestion > 4) {
         quizContainer.setAttribute("class","container d-none");
         finalContainer.setAttribute("class","container");
     } else {
-        console.log("still playing!")
+        console.log(currentQuestion)
     }
 }
-//create start button that initiates quiz (and timer)
+//create function that handles question choice by user
 function handleAnswerClick(){
     console.log(this.textContent);
     console.log(questions[currentQuestion].answer);
     if(this.textContent===questions[currentQuestion].answer) {
         currentQuestion ++;
+        congrats.textContent = "congratulations! That is correct!!"
+        endGame();
         generateQuestion();
     }  else {
             //timer interval needs to decrement by 5 for each wrong answer 
             secondsLeft -= 5; 
+            congrats.textContent = "Whoops! Thats incorrect, -5 seconds. Try again!"
             endGame();
             generateQuestion();
     }
@@ -93,11 +99,7 @@ function quizTimer() {
     }, 750);
   }
   generateQuestion();
-    //timer interval needs to decrement by 5 for each wrong answer 
-   // secondsLeft -= 5; 
-
-//when timer hits zero or all questions have been answered the quiz is over 
-
+  endGame();
 
 //when the game is over prompted to enter initials 
     //initials are stored with highscore 

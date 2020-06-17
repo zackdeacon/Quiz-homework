@@ -29,3 +29,9 @@
     margin: 10px auto;
     padding: 5px;
 }
+#right-or-wrong {
+    text-align: center;
+    color: royalblue;
+    font-size: medium;
+    font-weight: bold;
+}
