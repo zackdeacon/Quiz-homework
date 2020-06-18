@@ -148,21 +148,23 @@ highscore.addEventListener("click", function(){
     } else {
         var finalScore = {submitInitials, score};
         console.log(finalScore);
-        localStorage.setItem(finalScore, JSON.stringify(finalScore));
+        localStorage.setItem("finalScore", JSON.stringify(finalScore));
             
             highscorePage();
     }
-    function init() {
-    var dataStored =(localStorage.getItem(finalScore));
-    if(dataStored) {
-        for (var i = 0; i < dataStored.length; i++) {
-            var createLi = document.createElement("li");
-            createLi.textContent = finalScore;
-            displayedScores.appendChild(createLi);
-        }
+    // function init() {
+    // var dataStored =(localStorage.getItem("finalScore"));
     
-        }
-    }
+    // if(dataStored) {
+    //     console.log(dataStored)
+    //     for (var i = 0; i < dataStored.length; i++) {
+    //         var createLi = document.createElement("li");
+    //         createLi.textContent = finalScore;
+    //         displayedScores.appendChild(createLi);
+    //     }
+    
+    //     }
+    // }
 //     if (allScores !== null) {
 
     // for (var i = 0; i < allScores.length; i++) {
@@ -173,6 +175,26 @@ highscore.addEventListener("click", function(){
 // }
 
   })
+
+  function init() {
+    var dataStored =JSON.parse(localStorage.getItem("finalScore"));
+    dataStored.submitInitials
+    
+    if(dataStored) {
+        console.log(dataStored)
+        var createLi= document.createElement("li");
+        createLi.textContent = dataStored.submitInitials + dataStored.score;
+        displayedScores.appendChild(createLi);
+
+        // for (var i = 0; i < dataStored.length; i++) {
+        //     var createLi = document.createElement("li");
+        //     createLi.textContent = dataStored;
+        //     displayedScores.appendChild(createLi);
+        // }
+    
+        }
+    }
+
   generateQuestion();
   endGame();
   init();
