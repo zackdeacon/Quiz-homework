@@ -11,4 +11,4 @@ Enjoy!
 Repo: https://github.com/zackdeacon/Quiz-homework
 deployed link: https://zackdeacon.github.io/Quiz-homework
 
-Image 6-18-20 at 9.47 AM.jpeg
+[screenshot](Image 6-18-20 at 9.47 AM.jpeg)
