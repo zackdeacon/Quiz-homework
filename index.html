@@ -15,7 +15,7 @@
         </div>
         <div class="col-sm-7"></div>
         <div class="col-ms-1">
-        <p>Time:</p>
+        <p id="rightCorner">Time:</p>
         </div>
         <div class="col-sm-1">
          <p id="timer"></p>
@@ -53,20 +53,20 @@
   <div class="container d-none" id="final-container">
     <div class="row">
         <div class="col-12 text-center">
-            <form>
+            <!-- <form> -->
                 <div class="form-group row">
-                    <label for="final-score" class="col-sm-7 col-form-label">Final Score</label>
+                    <!-- <label for="final-score" class="col-sm-7 col-form-label">Final Score</label> -->
                     <div class="col-sm-5">
-                        <input type="number" readonly class="form-control final-score" placeholder="0">
+                        <p id="quizScore"> </p>
                     </div>
                 </div>
-            </form>
+            <!-- </form> -->
             <form>
                 <div class="form-group">
                   <label for="initials-entry">Initials</label>
-                  <input type="text" class="form-control initials-entry" placeholder="Enter initials">
+                  <input id="initials" type="text" class="form-control initials-entry" placeholder="Enter initials">
                 </div>
-                <button type="button" class="btn btn-primary submit-initials">Submit</button>
+                <button id="initial-submit" type="button" class="btn btn-primary submit-initials">Submit</button>
             </form>
         </div>
     </div>

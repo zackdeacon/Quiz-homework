@@ -6,6 +6,10 @@ var quizContainer = document.getElementById("quiz-container");
 var finalContainer = document.getElementById("final-container");
 var questionTitle = document.getElementById("questiontitle");
 var congrats = document.getElementById("right-or-wrong");
+var rightCorner = document.getElementById("rightCorner");
+var quizScore = document.getElementById("quizScore");
+var initialBtn = document.getElementById("initial-submit");
+var initials = document.getElementById("initials");
 var secondsLeft = 75;
 var score = 0;
 var currentQuestion = 0; 
@@ -20,9 +24,11 @@ startBtn.addEventListener("click", function() {
 //when timer hits zero or all questions have been answered the quiz is over 
 
 function endGame() {
-    if (secondsLeft <= 1 || currentQuestion > 4) {
+    if (secondsLeft === 0 || currentQuestion > 4) {
         quizContainer.setAttribute("class","container d-none");
         finalContainer.setAttribute("class","container");
+        score = secondsLeft;
+        quizScore.textContent = "Your final score is: " + score;
     } else {
         console.log(currentQuestion)
     }
@@ -91,16 +97,48 @@ function quizTimer() {
       secondsLeft--;
       timer.textContent = secondsLeft;
   
-      if(secondsLeft === 0) {
+      if(secondsLeft === 0 || currentQuestion > 4) {
         clearInterval(timerInterval);
-        alert("Thank you for playing, better luck next time")
+        timer.setAttribute("class","timer d-none");
+        // alert("Thank you for playing, better luck next time")
       }
   
     }, 750);
   }
-  generateQuestion();
-  endGame();
+//create/unhide div containing highscores
+  //highscore page needs to be updated with local storage
+  //highscores! button needs click listener with same effect
+  function highscorePage () {
+
+}
 
 //when the game is over prompted to enter initials 
     //initials are stored with highscore 
     //highscore can be accessed at any time during game 
+
+  initialBtn.addEventListener("click", function(){
+    var submitInitials = initials.value;
+
+    if (initials.value === "") {
+        alert("you need to enter your initials!");
+    } else {
+        var finalScore = initials.value + "" + score;
+        console.log(finalScore);
+        var allScores = localStorage.getItem("allScores");
+            if (allScores === null) {
+                allScores = [];
+            } else {
+                allScores = JSON.parse(allScores);
+            }
+            allScores.push(finalScore);
+            var newScore = JSON.stringify(allScores);
+            localStorage.setItem("allScores", newScore);
+
+            highscorePage();
+    }
+ 
+
+  })
+  generateQuestion();
+  endGame();
+
