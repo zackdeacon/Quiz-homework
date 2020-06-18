@@ -1,6 +1,6 @@
 var startBtn = document.getElementById("btn-start");
 var timer = document.getElementById("timer");
-var highscores = document.getElementById("highscores");
+var highscore = document.getElementById("highscores");
 var startingContainer = document.getElementById("starting-page");
 var quizContainer = document.getElementById("quiz-container");
 var finalContainer = document.getElementById("final-container");
@@ -10,6 +10,11 @@ var rightCorner = document.getElementById("rightCorner");
 var quizScore = document.getElementById("quizScore");
 var initialBtn = document.getElementById("initial-submit");
 var initials = document.getElementById("initials");
+var highScoreContainer = document.getElementById("highscore-container");
+var clearHighscoreBtn = document.getElementById("clear-highscore");
+var goHomeBtn = document.getElementById("go-back");
+var displayedScores = document.getElementById("displayedScores");
+
 var secondsLeft = 75;
 var score = 0;
 var currentQuestion = 0; 
@@ -109,8 +114,27 @@ function quizTimer() {
   //highscore page needs to be updated with local storage
   //highscores! button needs click listener with same effect
   function highscorePage () {
-
+    finalContainer.setAttribute("class","container d-none");
+    highScoreContainer.setAttribute("class","container");
 }
+
+goHomeBtn.addEventListener("click", function(){
+    highScoreContainer.setAttribute("class","container d-none");
+    startingContainer.setAttribute("class","container");
+    location.reload();
+})
+
+clearHighscoreBtn.addEventListener("click", function(){
+    localStorage.clear();
+    location.reload();
+})
+
+highscore.addEventListener("click", function(){
+    startingContainer.setAttribute("class","container d-none");
+    quizContainer.setAttribute("class","container d-none");
+    finalContainer.setAttribute("class","container d-none");
+    highScoreContainer.setAttribute("class","container");
+})
 
 //when the game is over prompted to enter initials 
     //initials are stored with highscore 
@@ -122,23 +146,33 @@ function quizTimer() {
     if (initials.value === "") {
         alert("you need to enter your initials!");
     } else {
-        var finalScore = initials.value + "" + score;
+        var finalScore = {submitInitials, score};
         console.log(finalScore);
-        var allScores = localStorage.getItem("allScores");
-            if (allScores === null) {
-                allScores = [];
-            } else {
-                allScores = JSON.parse(allScores);
-            }
-            allScores.push(finalScore);
-            var newScore = JSON.stringify(allScores);
-            localStorage.setItem("allScores", newScore);
-
+        localStorage.setItem(finalScore, JSON.stringify(finalScore));
+            
             highscorePage();
     }
- 
+    function init() {
+    var dataStored =(localStorage.getItem(finalScore));
+    if(dataStored) {
+        for (var i = 0; i < dataStored.length; i++) {
+            var createLi = document.createElement("li");
+            createLi.textContent = finalScore;
+            displayedScores.appendChild(createLi);
+        }
+    
+        }
+    }
+//     if (allScores !== null) {
+
+    // for (var i = 0; i < allScores.length; i++) {
+    //     var createLi = document.createElement("li");
+    //     createLi.textContent = allScores[i].initials + " " + allScores[i].score;
+    //     displayedScores.appendChild(createLi);
+    // }
+// }
 
   })
   generateQuestion();
   endGame();
-
+  init();

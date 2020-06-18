@@ -35,3 +35,32 @@
     font-size: medium;
     font-weight: bold;
 }
+#highheader {
+    text-align: center;
+}
+#displayedScores {
+    text-align: center;
+}
+#highscore-container {
+    display: flex;
+    justify-content: center;
+    border: 1px solid black;
+}
+#go-back {
+    border: 1px solid black;
+    background: papayawhip;
+    color: saddlebrown;
+    display: flex;
+    justify-content: center;
+    margin: 10px auto;
+    padding: 5px;
+}
+#clear-highscore {
+    border: 1px solid black;
+    background: papayawhip;
+    color: saddlebrown;
+    display: flex;
+    justify-content: center;
+    margin: 10px auto;
+    padding: 5px;
+}
