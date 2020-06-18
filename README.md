@@ -8,3 +8,5 @@ i used javascript to manipulate divs and navigate through the quiz. There is a t
 
 Enjoy!
 
+Repo: https://github.com/zackdeacon/Quiz-homework
+deployed link: https://zackdeacon.github.io/Quiz-homework
