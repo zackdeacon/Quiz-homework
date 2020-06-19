@@ -11,4 +11,4 @@ Enjoy!
 Repo: https://github.com/zackdeacon/Quiz-homework
 deployed link: https://zackdeacon.github.io/Quiz-homework
 
-[screenshot](Image 6-18-20 at 9.47 AM.jpeg)
+![](Image%206-18-20%20at%209.47%20AM.jpeg)
