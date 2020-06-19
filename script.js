@@ -116,6 +116,7 @@ function quizTimer() {
   function highscorePage () {
     finalContainer.setAttribute("class","container d-none");
     highScoreContainer.setAttribute("class","container");
+    init();
 }
 
 goHomeBtn.addEventListener("click", function(){
@@ -146,55 +147,31 @@ highscore.addEventListener("click", function(){
     if (initials.value === "") {
         alert("you need to enter your initials!");
     } else {
-        var finalScore = {submitInitials, score};
-        console.log(finalScore);
-        localStorage.setItem("finalScore", JSON.stringify(finalScore));
+        var storedScores = JSON.parse(localStorage.getItem("highScores"));
+        console.log(storedScores);
+        storedScores[submitInitials] = score;
+        localStorage.setItem("highScores", JSON.stringify(storedScores));
             
             highscorePage();
     }
-    // function init() {
-    // var dataStored =(localStorage.getItem("finalScore"));
-    
-    // if(dataStored) {
-    //     console.log(dataStored)
-    //     for (var i = 0; i < dataStored.length; i++) {
-    //         var createLi = document.createElement("li");
-    //         createLi.textContent = finalScore;
-    //         displayedScores.appendChild(createLi);
-    //     }
-    
-    //     }
-    // }
-//     if (allScores !== null) {
-
-    // for (var i = 0; i < allScores.length; i++) {
-    //     var createLi = document.createElement("li");
-    //     createLi.textContent = allScores[i].initials + " " + allScores[i].score;
-    //     displayedScores.appendChild(createLi);
-    // }
-// }
-
   })
 
   function init() {
-    var dataStored =JSON.parse(localStorage.getItem("finalScore"));
-    dataStored.submitInitials
+    var dataStored =JSON.parse(localStorage.getItem("highScores"));
+    
     
     if(dataStored) {
         console.log(dataStored)
+        for (const property in dataStored) {
+            console.log(`${property}: ${dataStored[property]}`);
+         
         var createLi= document.createElement("li");
-        createLi.textContent = dataStored.submitInitials + dataStored.score;
+        createLi.textContent = property + ": " + dataStored[property];
         displayedScores.appendChild(createLi);
-
-        // for (var i = 0; i < dataStored.length; i++) {
-        //     var createLi = document.createElement("li");
-        //     createLi.textContent = dataStored;
-        //     displayedScores.appendChild(createLi);
-        // }
-    
+        }
         }
     }
 
   generateQuestion();
   endGame();
-  init();
+//   init();
